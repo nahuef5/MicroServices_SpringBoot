@@ -1,9 +1,7 @@
 package com.lcwd.hotel.service;
-
 import com.lcwd.hotel.entity.Hotel;
 import com.lcwd.hotel.exceptions.ResourceNotFoundException;
 import com.lcwd.hotel.respository.HotelRepository;
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +22,6 @@ public class HotelService{
     }
 
     public Hotel get(Integer hotelId) {
-        return hotelRepository.findById(hotelId).orElseThrow(() -> new ResourceNotFoundException("There is no hotel with that id!!"));
+        return hotelRepository.findById(hotelId).orElseThrow(() -> new ResourceNotFoundException("There is no hotel with that id"));
     }
 }

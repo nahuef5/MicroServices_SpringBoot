@@ -28,7 +28,7 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka
-#Okta configuration for api gateway
+#Okta configuration for API Gateway
 okta:
     oauth2:
         issuer: https://dev-27553448.okta.com/oauth2/default

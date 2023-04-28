@@ -16,27 +16,27 @@ public class RatingController {
     @Autowired
     private RatingService ratingService;
 
-    //create rating
+    //CREATE 
     @PreAuthorize("hasAuthority('Admin')")
     @PostMapping
     public ResponseEntity<Rating> create(@RequestBody Rating rating) {
         return ResponseEntity.status(HttpStatus.CREATED).body(ratingService.create(rating));
     }
 
-    //get all
+    //GET ALL
     @GetMapping
     public ResponseEntity<List<Rating>> getRatings() {
         return ResponseEntity.ok(ratingService.getRatings());
     }
 
-    //get all of user
+    //GET FOR USER
     @PreAuthorize("hasAuthority('SCOPE_internal') || hasAuthority('Admin')")
     @GetMapping("/users/{userId}")
     public ResponseEntity<List<Rating>> getRatingsByUserId(@PathVariable Integer userId) {
         return ResponseEntity.ok(ratingService.getRatingByUserId(userId));
     }
 
-    //get all of hotels
+    //GET ALL OF HOTEL
     @GetMapping("/hotels/{hotelId}")
     public ResponseEntity<List<Rating>> getRatingsByHotelId(@PathVariable Integer hotelId) {
         return ResponseEntity.ok(ratingService.getRatingByHotelId(hotelId));

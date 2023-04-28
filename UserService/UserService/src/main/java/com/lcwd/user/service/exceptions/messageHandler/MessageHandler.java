@@ -1,8 +1,6 @@
 package com.lcwd.user.service.exceptions.messageHandler;
-
 import lombok.*;
 import org.springframework.http.HttpStatus;
-
 
 @Data
 @AllArgsConstructor

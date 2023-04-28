@@ -1,5 +1,4 @@
 package com.lcwd.rating.entity;
-
 import java.io.Serializable;
 import javax.persistence.*;
 import lombok.*;

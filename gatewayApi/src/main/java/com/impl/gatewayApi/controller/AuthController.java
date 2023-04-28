@@ -18,12 +18,12 @@ public class AuthController {
             @RegisteredOAuth2AuthorizedClient("okta") OAuth2AuthorizedClient client,
             @AuthenticationPrincipal OidcUser user,
             Model model){
-        //creating auth response object
-        MessageHandlerAuth auth= new MessageHandlerAuth();
-        //setting email to response
-        auth.setUserId(user.getEmail());
-        //setting token to response 
-        auth.setAccessToken(client.getAccessToken().getTokenValue());
+        
+        MessageHandlerAuth auth= new MessageHandlerAuth();//Creating auth response object
+        
+        auth.setUserId(user.getEmail());//Setting email to response
+        
+        auth.setAccessToken(client.getAccessToken().getTokenValue());//Setting token to response 
         
         auth.setRefreshToken(client.getRefreshToken().getTokenValue());
         

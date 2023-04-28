@@ -14,22 +14,19 @@ import org.springframework.security.access.prepost.PreAuthorize;
 public class HotelController {
     @Autowired
     private HotelService hotelService;
-
-    //create
+    //CREATE
     @PreAuthorize("hasAuthority('Admin')")
     @PostMapping
     public ResponseEntity<Hotel> createHotel(@RequestBody Hotel hotel) {
         return ResponseEntity.status(HttpStatus.CREATED).body(hotelService.create(hotel));
     }
-
-    //get single
+    //GET A HOTEL
     @PreAuthorize("hasAuthority('SCOPE_internal')")
     @GetMapping("/{hotelId}")
     public ResponseEntity<Hotel> getHotel(@PathVariable ("hotelId") Integer hotelId) {
         return ResponseEntity.status(HttpStatus.OK).body(hotelService.get(hotelId));
     }
-
-    //get all
+    //GET HOTELS LIST
     @PreAuthorize("hasAuthority('SCOPE_internal') || hasAuthority('Admin')")
     @GetMapping
     public ResponseEntity<List<Hotel>> getAll(){

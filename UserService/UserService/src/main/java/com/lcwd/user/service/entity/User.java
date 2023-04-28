@@ -1,5 +1,4 @@
 package com.lcwd.user.service.entity;
-
 import com.lcwd.user.service.dto.RatingDto;
 import java.io.Serializable;
 import java.util.*;
@@ -29,5 +28,4 @@ public class User implements Serializable {
         this.email = email;
         this.about = about;
     }
-    
 }

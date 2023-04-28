@@ -20,7 +20,6 @@ public class ConfigurationApp {
     private ClientRegistrationRepository client;
     @Autowired
     private OAuth2AuthorizedClientRepository oauthClient;
-    
     @Bean
     public OAuth2AuthorizedClientManager manager(
         ClientRegistrationRepository clientRegistRepo,
@@ -50,7 +49,5 @@ public class ConfigurationApp {
         interceptor.add(new RestTemplateInterceptor(manager(client, oauthClient)));
         restT.setInterceptors(interceptor);
         return restT;
-    }   
-    //delcore the bean of OAuth2AuthorizedClient manager 
-    
+    }       
 }

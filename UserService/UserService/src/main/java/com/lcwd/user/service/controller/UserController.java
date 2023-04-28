@@ -16,14 +16,14 @@ public class UserController {
     @Autowired
     private UserService userService;
     private Logger log = LoggerFactory.getLogger(UserController.class);
-    //create
+    //CREATE
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User us = userService.saveUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(us);
     }
 
-    //single user get
+    //GET A USER
 
     @GetMapping("/{userId}")
     @RateLimiter(name="userRateLimiter", fallbackMethod="ratingHotelFallback")
@@ -32,22 +32,20 @@ public class UserController {
         User user = userService.getUser(userId);
         return ResponseEntity.ok(user);
     }
-    //creating fall back method for circuitBreaker
+    //METHOD FOR  CircuitBreaker
     public ResponseEntity<User> ratingHotelFallback(Integer userId, Exception ex) {
         
         ex.printStackTrace();
-
         User user = User.builder()
-                .email("dummy@gmail.com")
-                .name("Dummy")
-                .about("This user is created dummy because some service is down")
-                .userId(141234)
+                .email("ERROR@ERROR.com")
+                .name("FATAL")
+                .about("This error is created because some service is down")
+                .userId(314159)
                 .build();
         return new ResponseEntity(user, HttpStatus.BAD_REQUEST);
     }
 
-
-    //all user get
+    //ALL USER
     @GetMapping
     public ResponseEntity<List<User>> getAllUser() {
         List<User> allUser = userService.getAllUser();

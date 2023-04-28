@@ -9,16 +9,10 @@ import org.springframework.web.bind.annotation.*;
 @Service
 @FeignClient(name="RATING")
 public interface RatingService {
-     @PostMapping("/ratings")
+   
+    //CREATE
+    @PostMapping("/ratings")
     public ResponseEntity<RatingDto> createRating(RatingDto values);
 
-
-    //PUT
-    @PutMapping("/ratings/{ratingId}")
-    public ResponseEntity<RatingDto> updateRating(@PathVariable("ratingId") Integer ratingId, RatingDto rating);
-
-
-    @DeleteMapping("/ratings/{ratingId}")
-    public void deleteRating(@PathVariable Integer ratingId);
 }
 
